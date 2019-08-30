@@ -37,10 +37,10 @@ public class Spawner : MonoBehaviour {
 
         isP = true;
         foreach (var item in Lines.Where(l => l.transform.position.y > y))
-            item.transform.DOLocalMoveY(-1, 0.6f).SetEase(Ease.OutExpo).SetRelative(true);
+            item.transform.DOLocalMoveY(-1.1f, 0.6f).SetEase(Ease.OutExpo).SetRelative(true);
 
         var newLine = LeanPool.Spawn(linePref, transform.localPosition, Quaternion.identity);
-        newLine.transform.DOLocalMoveY(8, 0.6f).SetDelay(0.2f).SetEase(Ease.OutExpo).From().SetRelative(true)
+        newLine.transform.DOLocalMoveY(10, 0.6f).SetDelay(0.2f).SetEase(Ease.OutExpo).From().SetRelative(true)
             .OnComplete(() => { isP = false; NewLine(y); });
 
         Lines.Add(newLine);

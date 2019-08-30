@@ -65,7 +65,7 @@ public class BallPhysics : MonoBehaviour {
         if (!isOnSpawn)
             return;
         var newVelocity = (dir ?? Vector2.up).normalized * speed;
-        newVelocity.y = newVelocity.y < 0 ? -newVelocity.y : newVelocity.y;
+        newVelocity.y = Mathf.Abs(newVelocity.y);
 
         body.velocity = newVelocity;
         body.angularVelocity = 450f;

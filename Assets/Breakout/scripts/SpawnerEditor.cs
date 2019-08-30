@@ -1,4 +1,4 @@
-﻿using UnityEditor;
+﻿/* using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(Spawner))]
@@ -12,4 +12,4 @@ public class SpawnerEditor : Editor {
             //myScript.NewLine();
         }
     }
-}
+} */
