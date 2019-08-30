@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linePref: {fileID: 5324778282776970781, guid: e37f6595d2e52f44b9d2924a87650cf1,
     type: 3}
+  maxLines: 4

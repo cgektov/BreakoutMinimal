@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa2e06e5c927e54d8c12cb4ccaf2c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 0}
+  ball: {fileID: 1669220971, guid: d705df4cd840f7944aaed54b03693c2e, type: 3}
   leftLimit: {fileID: 0}
   rightLimit: {fileID: 0}
   Dampening: 75

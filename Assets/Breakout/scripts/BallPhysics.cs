@@ -8,10 +8,8 @@ public class BallPhysics : MonoBehaviour {
 
     Rigidbody2D body;
     float speed = 15f;
-    bool isOnSpawn = true;
-    public bool IsOnSpawn { get => isOnSpawn; }
-
-
+    static bool isOnSpawn = true;
+    public static bool IsOnSpawn { get => isOnSpawn; }
 
     public int angleStuckCorrectionX = 1;
     public int angleStuckCorrectionY = 3;
@@ -83,4 +81,5 @@ public class BallPhysics : MonoBehaviour {
         isOnSpawn = true;
 
     }
+
 }

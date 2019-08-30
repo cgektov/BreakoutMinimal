@@ -1,31 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Stats : MonoBehaviour {
 
     Text t;
-    int totalLines = -1;
+    int totalLines = 0;
 
     void Start() {
-        BallPhysics.BallLost += Reset;
         LineVariation.AnyLineEmpty += (gameObject) => UpdateStatsText();
+        BallPhysics.BallLost += ResetStast;
 
         t = gameObject.GetComponent<Text>();
         UpdateStatsText();
     }
 
-
-
     void UpdateStatsText() {
-        totalLines++;
+        if (!BallPhysics.IsOnSpawn)
+            totalLines++;
         t.text = string.Format("TOTAL LINES: {0}", totalLines);
     }
 
 
-
-    void Reset() {
+    void ResetStast() {
         totalLines = -1;
         UpdateStatsText();
     }

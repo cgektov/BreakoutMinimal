@@ -8,21 +8,17 @@ public class Spawner : MonoBehaviour {
 
     [SerializeField]
     GameObject linePref;
+    [SerializeField]
+    int maxLines = 4;
 
     List<GameObject> Lines = new List<GameObject>();
 
-    int maxLines = 4;
-    //int currentLines = 0;
-
-    Tween delay;
 
     void Start() {
-
-        //BallPhysics.BallLost += RemoveAllLines;
         LineVariation.AnyLineEmpty += RemoveLine;
 
-        //the coolest delayed invoke implementation :D
-        transform.DOMove(transform.position, 0.4f).SetLoops(maxLines).Play().OnStepComplete(() => NewLine());
+        for (int i = 0; i <= maxLines; i++)
+            NewLine();
     }
 
 
@@ -32,24 +28,21 @@ public class Spawner : MonoBehaviour {
         NewLine((int)obj.transform.position.y);
     }
 
-    /*     void RemoveAllLines() {
-            foreach (var item in Lines) {
-                LeanPool.Despawn(item);
-                Lines.Remove(item);
-            }
-        }
-     */
 
-
-    public void NewLine(int y = 0) {
-        if (Lines.Count > maxLines - 1)
+    bool isP = false;
+    void NewLine(int y = 0) {
+        if (isP || Lines.Count >= maxLines) {
             return;
+        }
 
+        isP = true;
         foreach (var item in Lines.Where(l => l.transform.position.y > y))
-            item.transform.DOLocalMoveY(-1, 0.4f).SetEase(Ease.OutBounce).SetRelative(true);
+            item.transform.DOLocalMoveY(-1, 0.6f).SetEase(Ease.OutExpo).SetRelative(true);
 
         var newLine = LeanPool.Spawn(linePref, transform.localPosition, Quaternion.identity);
-        newLine.transform.DOLocalMoveY(8, 0.4f).SetEase(Ease.OutBounce).From().SetRelative(true);
+        newLine.transform.DOLocalMoveY(8, 0.6f).SetDelay(0.2f).SetEase(Ease.OutExpo).From().SetRelative(true)
+            .OnComplete(() => { isP = false; NewLine(y); });
+
         Lines.Add(newLine);
     }
 

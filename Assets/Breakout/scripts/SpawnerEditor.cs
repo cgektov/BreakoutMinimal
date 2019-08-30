@@ -9,7 +9,7 @@ public class SpawnerEditor : Editor {
         Spawner myScript = (Spawner)target;
 
         if (GUILayout.Button("NL")) {
-            myScript.NewLine();
+            //myScript.NewLine();
         }
     }
 }
